@@ -1,0 +1,62 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    const int numQuestions = 5;
+    string questions[numQuestions] = {
+        "1. Who developed the C++ programming language?",
+        "2. Which of the following is not a valid C++ data type?",
+        "3. What symbol is used to terminate a statement in C++?",
+        "4. Which OOP concept allows using the same function name with different parameters?",
+        "5. Which header file is needed to use cout and cin?"
+    };
+
+    string options[numQuestions][4] = {
+        {"A. Bjarne Stroustrup", "B. Dennis Ritchie", "C. James Gosling", "D. Ken Thompson"},
+        {"A. int", "B. float", "C. real", "D. char"},
+        {"A. , (comma)", "B. ; (semicolon)", "C. : (colon)", "D. . (dot)"},
+        {"A. Inheritance", "B. Abstraction", "C. Polymorphism", "D. Encapsulation"},
+        {"A. <iostream>", "B. <conio.h>", "C. <stdio.h>", "D. <string.h>"}
+    };
+
+    char correctAnswers[numQuestions] = {'A', 'C', 'B', 'C', 'A'};
+    char answer;
+    int score = 0;
+
+    cout << "=====================================\n";
+    cout << "        QUIZ GAME IN C++\n";
+    cout << "=====================================\n";
+
+    for (int i = 0; i < numQuestions; i++) {
+        cout << "\n" << questions[i] << endl;
+        for (int j = 0; j < 4; j++) {
+            cout << options[i][j] << endl;
+        }
+
+        cout << "Enter your answer (A/B/C/D): ";
+        cin >> answer;
+        answer = toupper(answer);
+
+        if (answer == correctAnswers[i]) {
+            cout << "✅ Correct!\n";
+            score++;
+        } else {
+            cout << "❌ Wrong! Correct answer: " << correctAnswers[i] << endl;
+        }
+    }
+
+    cout << "\n=====================================\n";
+    cout << "           QUIZ RESULT\n";
+    cout << "=====================================\n";
+    cout << "You scored " << score << " out of " << numQuestions << "!\n";
+
+    if (score == numQuestions)
+        cout << "🏆 Excellent! Perfect Score!\n";
+    else if (score >= 3)
+        cout << "👍 Good Job! Keep Learning!\n";
+    else
+        cout << "😢 Better Luck Next Time!\n";
+
+    return 0;
+}
